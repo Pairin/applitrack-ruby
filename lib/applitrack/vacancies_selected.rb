@@ -20,6 +20,9 @@ module Applitrack
 
     end
 
+    def job_posting
+      @job_posting ||= JobPosting.retrieve(job_code)
+    end
 
   end
 end

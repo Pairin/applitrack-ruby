@@ -11,5 +11,14 @@ module Applitrack
       end
     end
 
+    describe "#job_posting" do
+      let(:vs) { VacanciesSelected.new({job_code: 1}) }
+
+      it "should retrieve JobPosting with job_code" do
+        expect(JobPosting).to receive(:retrieve).with(vs.job_code)
+        vs.job_posting
+      end
+    end
+
   end
 end
