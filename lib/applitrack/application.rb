@@ -1,6 +1,7 @@
 require 'applitrack/applitrack_object'
 require 'applitrack/api_actions/retrievable'
 require 'applitrack/api_actions/list'
+require 'applitrack/vacancies_selected'
 
 module Applitrack
   class Application < ApplitrackObject
@@ -25,6 +26,11 @@ module Applitrack
         }
       end
 
+    end
+
+    def vacancies_selected(opts={})
+      vacancies_opts = opts.merge!({app_no: app_no})
+      VacanciesSelected.list(vacancies_opts)
     end
 
   end
