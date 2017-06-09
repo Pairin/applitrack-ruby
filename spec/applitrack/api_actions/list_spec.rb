@@ -74,8 +74,8 @@ module Applitrack
       end
 
       describe ".prepare_value" do
-        context "if value is not fixnum" do
-          let(:values) { ["", 1.0, true, {}, []] }
+        context "if value is not fixnum or string" do
+          let(:values) { [1.0, true, {}, []] }
 
           it "should return value" do
             values.each do |v|
@@ -84,10 +84,13 @@ module Applitrack
           end
         end
 
-        context "if value is fixnum" do
+        context "if value is fixnum or stsring" do
           it "should quote it" do
             num = Random.rand(10)
-            expect(described_class.prepare_value(num)).to eq("\'#{num}\'")
+
+            [num, num.to_s].each do |val|
+              expect(described_class.prepare_value(val)).to eq("\'#{val}\'")
+            end
           end
         end
 
