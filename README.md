@@ -26,7 +26,7 @@ Get the CLIENT CODE of the organization whose data you will be using through the
     }
 
 ### Accessing APIs
-Currently this gem supports basic API calls to Applications, Positions, and JobPostings.
+Currently this gem supports basic API calls to Applications, Positions, JobPostings, VacanciesSelected.
 For example:
 
 
