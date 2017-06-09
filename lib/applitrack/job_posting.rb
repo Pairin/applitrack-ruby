@@ -21,6 +21,7 @@ module Applitrack
     end
 
     def position
+      return nil if title.empty?
       @position ||= Position.list(specialty: title)[0]
     end
 
