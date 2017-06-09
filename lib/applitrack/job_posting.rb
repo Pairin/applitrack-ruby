@@ -20,5 +20,9 @@ module Applitrack
 
     end
 
+    def position
+      @position ||= Position.list(specialty: title)[0]
+    end
+
   end
 end
