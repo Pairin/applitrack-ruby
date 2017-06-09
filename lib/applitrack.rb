@@ -11,6 +11,7 @@ require 'applitrack/api_actions/retrievable'
 
 require 'applitrack/applitrack_object'
 require 'applitrack/position'
+require 'applitrack/vacancies_selected'
 require 'applitrack/application'
 require 'applitrack/job_posting'
 
