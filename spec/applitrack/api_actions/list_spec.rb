@@ -74,26 +74,31 @@ module Applitrack
       end
 
       describe ".prepare_value" do
-        context "if value is not fixnum or string" do
-          let(:values) { [1.0, true, {}, []] }
+        context "if value is fixnum" do
+          it "should return string" do
+            expect(described_class.prepare_value(1)).to eq('1')
+          end
+        end
 
-          it "should return value" do
-            values.each do |v|
-              expect(described_class.prepare_value(v)).to eq(v)
+        context "if value is boolean" do
+          it "should return string" do
+            [true, false].each do |v|
+              expect(described_class.prepare_value(v)).to eq("#{v}")
             end
           end
         end
 
-        context "if value is fixnum or stsring" do
-          it "should quote it" do
-            num = Random.rand(10)
-
-            [num, num.to_s].each do |val|
-              expect(described_class.prepare_value(val)).to eq("\'#{val}\'")
+        context "if value is a string" do
+          context "that is an interpretation of a fixnum" do
+            it "should remain unchanged" do
+              expect(described_class.prepare_value("123")).to eq("123")
             end
           end
-        end
 
+          it "should return quoted value" do
+            expect(described_class.prepare_value("value")).to eq("\'value\'")
+          end
+        end
       end
 
     end

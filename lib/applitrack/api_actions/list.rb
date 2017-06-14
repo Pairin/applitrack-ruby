@@ -43,9 +43,13 @@ module Applitrack
         request_endpoint
       end
 
-      # Quote integers and strings because Applitrack API is picky
+      # Quote integers, bools, and strings because Applitrack API is picky
       def prepare_value(value)
-        [Fixnum, String].include?(value.class) ? "\'#{value}\'" : value
+        if [TrueClass, FalseClass].include?(value.class) || value.is_a?(Fixnum) || value.match(/^[0-9]+$/)
+          value.to_s
+        elsif value.is_a?(String)
+          "\'#{value}\'"
+        end
       end
 
     end
