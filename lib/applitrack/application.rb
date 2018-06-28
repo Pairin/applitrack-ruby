@@ -18,11 +18,12 @@ module Applitrack
       # Acceptable options for #list with translation to API params
       def list_filters
         {
-          track_end_date: "TrkEndDate gt VALUE",
-          app_no: "AppNo eq VALUE",
-          first_name: "AppFirstName eq VALUE",
-          last_name: "AppLastName eq VALUE",
-          email: "AppEmailAddress eq VALUE"
+          track_end_date: 'TrkEndDate gt VALUE',
+          track_first_submitted: 'TrkFirstSubmitted gt VALUE',
+          app_no: 'AppNo eq VALUE',
+          first_name: 'AppFirstName eq VALUE',
+          last_name: 'AppLastName eq VALUE',
+          email: 'AppEmailAddress eq VALUE'
         }
       end
 
